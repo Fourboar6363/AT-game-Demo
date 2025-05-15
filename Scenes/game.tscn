@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://evpeni6pgj5v"]
+
+[ext_resource type="PackedScene" uid="uid://b0jhkag21kt0a" path="res://Scenes/player.tscn" id="1_8i4nf"]
+[ext_resource type="Texture2D" uid="uid://cchnx1r1fcwoo" path="res://Assets/ground.png" id="2_fvw03"]
+[ext_resource type="PackedScene" uid="uid://bfuiptnebt6la" path="res://Scenes/enemy.tscn" id="2_xv32r"]
+[ext_resource type="PackedScene" uid="uid://d3oa4p5cen82c" path="res://Scenes/spawner.tscn" id="3_ofpvq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xlxot"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8i4nf")]
+position = Vector2(16, -25)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_xlxot")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-5, 292)
+scale = Vector2(9, 9)
+texture = ExtResource("2_fvw03")
+
+[node name="Enemy" parent="." instance=ExtResource("2_xv32r")]
+position = Vector2(39, -297)
+
+[node name="Spawner" parent="." instance=ExtResource("3_ofpvq")]
+position = Vector2(-2, -244)
+
+[node name="Spawner2" parent="." instance=ExtResource("3_ofpvq")]
+position = Vector2(-456, -230)
+
+[node name="Spawner3" parent="." instance=ExtResource("3_ofpvq")]
+position = Vector2(434, -267)
